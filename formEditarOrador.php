@@ -16,21 +16,21 @@ $fila = mysqli_fetch_array($query);
 <div class="container w-50 vh-100 p-5">
     <div class="container card p-5 bg-dark my-5 shadow p-3 mb-5 rounded">
             <h4 class="text-white pb-4 text-center">Editar Datos</h4>
-            <form action="agregarOrador.php" method="POST" class="row g-3">
+            <form action="editarOrador.php" method="POST" class="row g-3">
                 <div class="col d-none">
                     <input type="text" class="" id="id" name="id" value="<?php $fila["id"]?>">
                 </div>
                 <div class="">
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php $fila["nombre"]?>">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $fila["nombre"]?>">
                 </div>
                 <div class="">
                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" value="<?php echo $fila["apellido"]?>">
                 </div>
                 <div class="">
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" size="30" required<?php echo $fila["email"]?>">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $fila["email"]?>" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" size="30" required">
                 </div>
                 <div class="">
-                    <button type="submit" class="btn btn-primary w-100">Modificar</button>
+                    <button type="submit" value="editar" name="editar" class="btn btn-primary w-100">Modificar</button>
                 </div>
                 
             </form>
@@ -38,5 +38,18 @@ $fila = mysqli_fetch_array($query);
 </div>
 
 <?php
+/*
+//validar que el formulario se ha enviado
+if( isset ($_REQUEST['editar'])) {
+    //crear la consulta
+    $query = mysqli_query($conexion, $sql);
+    //comprobar el resultado de la consulta
+    if ($query) {
+        echo "Registro editado correctamente";
+    } else {
+        echo "Error al editar el registro";
+    }
+}
+*/
 include("footer.php");
 ?>
